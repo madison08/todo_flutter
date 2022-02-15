@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:todoapp/constants.dart';
 import 'package:todoapp/screens/addTask_screen.dart';
 
 import '../widgets/Tasks_list.dart';
+
+import '../widgets/myData.dart';
 
 class TasksScreen extends StatelessWidget {
   @override
@@ -49,6 +52,11 @@ class TasksScreen extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
+                // TextField(
+                //   onChanged: (val) {
+                //     Provider.of<Data>(context, listen: false).changeString(val);
+                //   },
+                // ),
                 Text(
                   '12 Tasks',
                   style: TextStyle(

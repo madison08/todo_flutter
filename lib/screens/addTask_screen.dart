@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:todoapp/constants.dart';
 
+import 'package:provider/provider.dart';
+import '../widgets/myData.dart';
+
 class AddTask extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -36,6 +39,9 @@ class AddTask extends StatelessWidget {
           ),
           TextField(
             autofocus: true,
+            onChanged: (val) {
+              Provider.of<Data>(context, listen: false).changeString(val);
+            },
           ),
           SizedBox(
             height: 20.0,
