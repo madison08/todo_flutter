@@ -17,11 +17,13 @@ class TaskList extends StatelessWidget {
               .taskCount, //dataProvider.tasks.length, //Provider.of<DataProvider>(context).tasks.length,
           itemBuilder: (BuildContext context, int index) {
             return TaskTitle(
-              titleList: dataProvider.getAllTasks[index]
-                  .name, //Provider.of<DataProvider>(context).tasks[index].name, //tasks[index].name,
-              isChecked: dataProvider.getAllTasks[index]
-                  .isDone, //Provider.of<DataProvider>(context).tasks[index].isDone,
-            );
+                titleList: dataProvider.getAllTasks[index]
+                    .name, //Provider.of<DataProvider>(context).tasks[index].name, //tasks[index].name,
+                isChecked: dataProvider.getAllTasks[index]
+                    .isDone, //Provider.of<DataProvider>(context).tasks[index].isDone,
+                checkBoxCallback: (checkBoxState) {
+                  dataProvider.getAllTasks[index];
+                });
           },
         );
       },

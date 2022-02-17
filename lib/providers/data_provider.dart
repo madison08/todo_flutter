@@ -21,6 +21,10 @@ class DataProvider with ChangeNotifier {
     return this._tasks;
   }
 
+  int get taskCount {
+    return _tasks.length;
+  }
+
   void addTask(String task) {
     Task newTask = Task(name: task);
 
@@ -30,7 +34,8 @@ class DataProvider with ChangeNotifier {
     print(_tasks);
   }
 
-  int get taskCount {
-    return _tasks.length;
+  void checkTask(Task task) {
+    task.toggleDone();
+    notifyListeners();
   }
 }
