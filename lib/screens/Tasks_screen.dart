@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todoapp/constants.dart';
+import 'package:todoapp/providers/data_provider.dart';
 import 'package:todoapp/screens/addTask_screen.dart';
 
 import '../widgets/Tasks_list.dart';
@@ -58,7 +59,7 @@ class TasksScreen extends StatelessWidget {
                 //   },
                 // ),
                 Text(
-                  '12 Tasks',
+                  '${Provider.of<DataProvider>(context).taskCount} Tâches', //'${Provider.of<DataProvider>(context).tasks.length} Tâches',
                   style: TextStyle(
                     color: Colors.white,
                   ),

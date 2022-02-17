@@ -2,11 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:todoapp/constants.dart';
 
 import 'package:provider/provider.dart';
+import 'package:todoapp/providers/data_provider.dart';
 import '../widgets/myData.dart';
 
-class AddTask extends StatelessWidget {
+class AddTask extends StatefulWidget {
+  @override
+  State<AddTask> createState() => _AddTaskState();
+}
+
+class _AddTaskState extends State<AddTask> {
+  TextEditingController _taskController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
+    String task;
     return Container(
       padding: EdgeInsets.all(25.0),
       width: 10.0,
@@ -38,28 +47,43 @@ class AddTask extends StatelessWidget {
             ),
           ),
           TextField(
-            autofocus: true,
+            controller: _taskController,
+            // autofocus: true,
             onChanged: (val) {
-              Provider.of<Data>(context, listen: false).changeString(val);
+              // print(val);
+              task = val;
+              // _taskController.text = val;
             },
+
+            // onSubmitted: () {
+            // },
           ),
           SizedBox(
             height: 20.0,
           ),
-          Container(
-            width: double.infinity,
-            child: TextButton(
-                onPressed: null,
-                child: Text(
-                  'Ajouter',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20.0,
+          GestureDetector(
+            onTap: () {
+              // print(task);
+              print(_taskController.text);
+              Provider.of<DataProvider>(context, listen: false)
+                  .addTask(_taskController.text);
+              Navigator.pop(context);
+            },
+            child: Container(
+              width: double.infinity,
+              child: TextButton(
+                  onPressed: null,
+                  child: Text(
+                    'Ajouter',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20.0,
+                    ),
                   ),
-                ),
-                style: TextButton.styleFrom(
-                  backgroundColor: kPrimaryColor,
-                )),
+                  style: TextButton.styleFrom(
+                    backgroundColor: kPrimaryColor,
+                  )),
+            ),
           )
         ],
       ),

@@ -8,22 +8,21 @@ import './Tasks_title.dart';
 import '../models/Task.dart';
 
 class TaskList extends StatelessWidget {
-  List<Task> tasks = [
-    Task(name: 'Prier'),
-    Task(name: 'Mediter'),
-    Task(name: 'Prier'),
-  ];
-
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: Provider.of<DataProvider>(context).tasks.length,
-      itemBuilder: (BuildContext context, int index) {
-        return TaskTitle(
-          titleList: Provider.of<DataProvider>(context)
-              .tasks[index]
-              .name, //tasks[index].name,
-          isChecked: Provider.of<DataProvider>(context).tasks[index].isDone,
+    return Consumer<DataProvider>(
+      builder: (context, dataProvider, child) {
+        return ListView.builder(
+          itemCount: dataProvider
+              .taskCount, //dataProvider.tasks.length, //Provider.of<DataProvider>(context).tasks.length,
+          itemBuilder: (BuildContext context, int index) {
+            return TaskTitle(
+              titleList: dataProvider.getAllTasks[index]
+                  .name, //Provider.of<DataProvider>(context).tasks[index].name, //tasks[index].name,
+              isChecked: dataProvider.getAllTasks[index]
+                  .isDone, //Provider.of<DataProvider>(context).tasks[index].isDone,
+            );
+          },
         );
       },
     );
