@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:todoapp/constants.dart';
 
 import '../widgets/myData.dart';
 
@@ -25,11 +26,13 @@ class TaskTitle extends StatelessWidget {
         style: TextStyle(
           decoration:
               isChecked ? TextDecoration.lineThrough : TextDecoration.none,
+          color: isChecked ? Colors.red : Colors.black,
         ),
       ),
       trailing: Checkbox(
         value: isChecked,
         onChanged: checkBoxCallback,
+        activeColor: kPrimaryColor,
       ),
     );
   }

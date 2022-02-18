@@ -21,10 +21,10 @@ class _AddTaskState extends State<AddTask> {
       width: 10.0,
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(25.0),
-          topRight: Radius.circular(25.0),
-        ),
+        // borderRadius: BorderRadius.only(
+        //   topLeft: Radius.circular(25.0),
+        //   topRight: Radius.circular(25.0),
+        // ),
       ),
       child: Column(
         children: <Widget>[
@@ -42,17 +42,27 @@ class _AddTaskState extends State<AddTask> {
           Text(
             'Ajouter une tache',
             style: TextStyle(
-              color: Colors.blue,
+              color: Colors.black,
               fontSize: 25.0,
             ),
           ),
+          SizedBox(
+            height: 10.0,
+          ),
           TextField(
+            decoration: InputDecoration(
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(0.0)),
+                borderSide: BorderSide(
+                  width: 0.5,
+                  color: kPrimaryColor, //Colors.grey.withOpacity(0.3),
+                ),
+              ),
+            ),
             controller: _taskController,
             // autofocus: true,
             onChanged: (val) {
-              // print(val);
               task = val;
-              // _taskController.text = val;
             },
 
             // onSubmitted: () {
@@ -68,6 +78,11 @@ class _AddTaskState extends State<AddTask> {
               Provider.of<DataProvider>(context, listen: false)
                   .addTask(_taskController.text);
               Navigator.pop(context);
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text("Tâches Ajouter"),
+                backgroundColor: Colors.green[400],
+                duration: Duration(seconds: 2),
+              ));
             },
             child: Container(
               width: double.infinity,

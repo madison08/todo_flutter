@@ -23,7 +23,8 @@ class TasksScreen extends StatelessWidget {
           );
         },
         child: Icon(Icons.add),
-        backgroundColor: Colors.lightBlueAccent,
+        backgroundColor: kPrimaryColor,
+        shape: RoundedRectangleBorder(),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -34,13 +35,24 @@ class TasksScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                CircleAvatar(
+                // CircleAvatar(
+                //   child: Icon(
+                //     Icons.list,
+                //     size: 30.0,
+                //     color: kPrimaryColor,
+                //   ),
+                //   backgroundColor: Colors.white,
+                //   radius: 30.0,
+                // ),
+                Container(
+                  // height: 20.0,
+                  padding: EdgeInsets.all(7.0),
+                  color: Colors.white,
                   child: Icon(
                     Icons.list,
                     size: 30.0,
+                    color: kPrimaryColor,
                   ),
-                  backgroundColor: Colors.white,
-                  radius: 30.0,
                 ),
                 SizedBox(
                   height: 10.0,
@@ -53,11 +65,6 @@ class TasksScreen extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                // TextField(
-                //   onChanged: (val) {
-                //     Provider.of<Data>(context, listen: false).changeString(val);
-                //   },
-                // ),
                 Text(
                   '${Provider.of<DataProvider>(context).taskCount} Tâches', //'${Provider.of<DataProvider>(context).tasks.length} Tâches',
                   style: TextStyle(
@@ -73,10 +80,10 @@ class TasksScreen extends StatelessWidget {
               // color: Colors.white,
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(20.0),
-                  topRight: Radius.circular(20.0),
-                ),
+                // borderRadius: BorderRadius.only(
+                //   topLeft: Radius.circular(20.0),
+                //   topRight: Radius.circular(20.0),
+                // ),
               ),
               child: Container(
                 width: double.infinity,
